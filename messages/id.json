@@ -1,0 +1,259 @@
+{
+  "navbar": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "services": "Layanan",
+    "fleet": "Armada",
+    "projects": "Proyek",
+    "coverage": "Area Operasi",
+    "news": "Berita",
+    "contact": "Kontak"
+  },
+
+  "hero": {
+    "badge": "Marine Logistics",
+
+    "title1": "Menghadirkan",
+    "title2": "Solusi Logistik",
+    "title3": "Maritim",
+    "title4": "Di Seluruh Indonesia",
+    "description": "Becta Logistics menyediakan jasa persewaan kapal LCT, pengangkutan alat berat, project cargo serta layanan logistik maritim dengan pelayanan profesional, aman dan tepat waktu di seluruh Indonesia.",
+
+    "primaryButton": "Hubungi Kami",
+    "secondaryButton": "Lihat Armada",
+
+    "stats": {
+      "experience": "Tahun Pengalaman",
+      "fleet": "Unit Armada",
+      "projects": "Proyek"
+    }
+  },
+
+  "trustedClients": {
+    "badge": "Klien Kami",
+    "title": "Dipercaya oleh Perusahaan Terkemuka",
+    "description": "Becta Logistics dipercaya oleh berbagai perusahaan nasional dalam menyediakan layanan persewaan kapal LCT, pengangkutan alat berat, project cargo, dan solusi logistik maritim di seluruh Indonesia."
+  },
+
+  "about": {
+    "title": "Tentang Becta Logistics",
+    "title-1": "Mitra Terpercaya Anda dalam Transportasi Maritim",
+    "year":"Tahun Pengalaman",
+
+    "description": "Dengan pengalaman bertahun-tahun dan armada modern, Becta Logistics menyediakan solusi logistik maritim yang aman, efisien, dan tepat waktu untuk berbagai kebutuhan proyek di seluruh Indonesia.",
+
+    "button": "Selengkapnya",
+
+    "features": {
+        "safety": {
+        "title": "Keselamatan Utama",
+        "description": "Berkomitmen terhadap operasional tanpa kecelakaan."
+        },
+
+        "delivery": {
+        "title": "Pengiriman Tepat Waktu",
+        "description": "Layanan yang handal dan tepat waktu."
+        },
+
+        "coverage": {
+        "title": "Layanan Nasional",
+        "description": "Melayani pelabuhan utama di seluruh Indonesia."
+        }
+    }
+  },
+
+  "services": {
+      "title": "Layanan Kami",
+      "badge": "Layanan Kami",
+      "title-1": "Solusi Logistik Maritim Terpadu",
+      "description": "Becta Logistics menyediakan berbagai layanan logistik maritim yang profesional, aman, dan terpercaya untuk mendukung kebutuhan proyek industri, pertambangan, energi, konstruksi, dan sektor lainnya di seluruh Indonesia.",
+
+      "readMore": "Selengkapnya",
+
+      "lctCharter": {
+        "title": "LCT Charter",
+        "description": "Layanan penyewaan kapal Landing Craft Tank (LCT) untuk pengangkutan alat berat, kendaraan, material proyek, dan berbagai jenis muatan ke seluruh wilayah Indonesia."
+      },
+
+      "projectCargo": {
+        "title": "Project Cargo",
+        "description": "Penanganan dan pengiriman project cargo, heavy lift, oversized cargo, serta peralatan industri dengan perencanaan yang aman dan efisien."
+      },
+
+      "marineLogistics": {
+        "title": "Marine Logistics",
+        "description": "Solusi logistik maritim yang terintegrasi untuk mendukung distribusi barang, kebutuhan proyek, dan operasional industri secara menyeluruh."
+      },
+
+      "portDelivery": {
+        "title": "Port to Port Delivery",
+        "description": "Layanan pengiriman barang antar pelabuhan dengan jadwal yang fleksibel, aman, dan tepat waktu untuk berbagai jenis kargo."
+      },
+
+      "offshoreSupport": {
+        "title": "Offshore Support",
+        "description": "Dukungan transportasi dan logistik untuk kegiatan offshore, eksplorasi energi, konstruksi laut, serta operasi kelautan lainnya."
+      },
+
+      "heavyEquipment": {
+        "title": "Heavy Equipment Transportation",
+        "description": "Transportasi alat berat seperti excavator, bulldozer, crane, dump truck, dan berbagai unit konstruksi dengan standar keselamatan tinggi."
+      }
+  },
+
+  "fleet": {
+    "title": "Armada Kami",
+    "description": ""
+  },
+
+  "projects": {
+    "title": "Proyek Kami"
+    
+  },
+  "featuredProjects": {
+      "badge": "Featured Projects",
+      "title": "Menghadirkan Keunggulan dalam Setiap Proyek",
+      "description": "Berbagai proyek logistik maritim yang telah kami selesaikan dengan aman, tepat waktu, dan profesional.",
+      "button": "Lihat Semua Proyek",
+
+      "morowali": "Transportasi Alat Berat ke Kawasan Industri Morowali",
+      "bridge": "Proyek Pendukung Pembangunan Jembatan",
+      "offshore": "Pengiriman Peralatan Offshore",
+      "coal": "Dukungan Logistik Tambang Batubara"
+  },  
+  "coverage": {
+    "title": "Area Operasi",
+    "description": ""
+  },
+
+  "contact": {
+    "title": "Hubungi Kami",
+    "description": ""
+  },
+
+  "footer": {
+    "copyright": "Seluruh hak cipta dilindungi.",
+    "description": "PT Becta Logistics adalah perusahaan logistik maritim terpercaya yang menyediakan layanan transportasi laut menggunakan Landing Craft Tank (LCT) untuk mendukung kebutuhan proyek di sektor pertambangan, konstruksi, energi, dan industri. Dengan armada yang andal, standar keselamatan tinggi, serta tim profesional, kami berkomitmen memberikan solusi pengiriman yang aman, tepat waktu, dan efisien di seluruh wilayah Indonesia.",
+    "quickLinks": "Menu",
+
+    "home": "Beranda",
+
+    "about": "Tentang Kami",
+
+    "services": "Layanan",
+
+    "fleet": "Armada",
+
+    "projects": "Proyek",
+
+    "contact": "Hubungi Kami",
+    "contactTitle": "Kontak",
+    "address": "Jl. Contoh No.123, Jakarta Utara, DKI Jakarta, Indonesia",
+    "certifications": "Sertifikasi",
+    "certificationsDescription": "Komitmen kami terhadap kualitas, keselamatan, dan kepatuhan terhadap standar industri.",
+    "privacy":"Kebijakan Privasi",
+    "terms":"Syarat & Ketentuan"
+  },
+  "navigation": {
+    "home": "Beranda",
+    "about": "Tentang",
+    "services": "Layanan",
+    "projects": "Proyek",
+    "fleet": "Armada",
+    "news": "Berita",
+    "contact": "Kontak"
+  },
+  "journey": {
+    "badge": "Our Journey",
+    "title": "Pengalaman yang Terbukti dan Dapat Dipercaya",
+
+    "mining": "Mining Project",
+    "bridge": "Bridge Construction",
+    "offshore": "Offshore Supply",
+    "heavy": "Heavy Equipment",
+    "nickel": "Nickel Mining"
+  },
+  "fleet": {
+    "badge": "Our Fleet",
+    "title": "Armada Siap Beroperasi",
+    "description": "Kami menyediakan armada LCT yang modern, terawat dan siap mendukung berbagai kebutuhan proyek di seluruh Indonesia.",
+    "viewAll": "Lihat Semua Armada",
+
+    "length": "Panjang",
+    "beam": "Lebar",
+    "cargo": "Kapasitas Muatan",
+    "speed": "Kecepatan",
+
+    "available": "Available",
+    "chartered": "Chartered"
+  },
+  "coverage-home": {
+    "badge": "Coverage Area",
+    "title": "Jangkauan Operasional Kami",
+    "description": "Kami melayani proyek marine logistics, charter LCT, dan pengangkutan alat berat di berbagai wilayah Indonesia.",
+    "viewMap": "Lihat Seluruh Area",
+    "projects": "Proyek Selesai",
+    "fleet": "Unit Armada",
+    "experience": "Tahun Pengalaman",
+    "satisfaction": "Kepuasan Pelanggan"
+  },
+  "cta": {
+    "title": "Mari Kirim Kargo Anda Dengan Aman dan Efisien",
+    "description": "Hubungi tim kami untuk mendapatkan solusi logistik maritim terbaik sesuai kebutuhan proyek Anda.",
+    "button": "Dapatkan Penawaran"
+  },
+  "breadcrumb": {
+    "home": "Beranda",
+    "about": "Tentang Kami",
+    "services": "Layanan",
+    "fleet": "Armada",
+    "projects": "Proyek",
+    "contact": "Kontak",
+    "news": "Berita"
+  },
+  "contact-page": {
+    "badge": "KONTAK",
+    "title": "Mari Diskusikan Kebutuhan Proyek Anda",
+    "description": "Membutuhkan layanan transportasi laut atau sewa kapal LCT? Tim kami siap membantu Anda dengan solusi logistik maritim yang aman, andal, dan efisien di seluruh Indonesia.",
+
+    "addressTitle": "Alamat Kantor",
+    "address": "Jl. Raya Pelabuhan No. 88, Jakarta, Indonesia",
+
+    "phoneTitle": "Nomor Telepon",
+
+    "emailTitle": "Alamat Email",
+
+    "hoursTitle": "Jam Operasional",
+    "office":"LOKASI KANTOR",
+
+    "findUs":"Temukan Kantor Kami",
+
+    "officeDescription":"Kunjungi kantor kami atau hubungi tim Becta Logistics untuk mendapatkan solusi transportasi laut yang sesuai dengan kebutuhan proyek Anda.",
+    "formTitle": "Kirim Pesan",
+    "formDescription": "Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda.",
+    "name": "Nama Lengkap",
+    "email": "Alamat Email",
+    "phone": "Nomor Telepon",
+    "subject": "Subjek",
+    "message": "Pesan",
+    "send": "Kirim Pesan"
+  },
+  "news-page": {
+    "badge": "BERITA TERBARU",
+    "title": "Berita & Informasi Terbaru",
+    "description": "Ikuti perkembangan terbaru PT Becta Logistics, proyek yang sedang berjalan, layanan, serta berbagai informasi mengenai industri logistik maritim di Indonesia.",
+    "home": "Beranda",
+    "news": "Berita",
+    "search":"Cari Berita",
+    "searchPlaceholder":"Cari artikel...",
+    "categories":"Kategori",
+    "recentPosts":"Berita Terbaru",
+    "tags":"Tag Populer"
+  },
+  "news-detail": {
+    "writtenBy": "DITULIS OLEH",
+    "description": "Tim editorial PT Becta Logistics menyajikan informasi terbaru mengenai logistik maritim, transportasi LCT, proyek, dan perkembangan perusahaan.",
+    "share": "BAGIKAN",
+    "shareTitle": "Bagikan Artikel Ini"
+    }
+}

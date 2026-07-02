@@ -1,0 +1,262 @@
+{
+  "navbar": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "fleet": "Fleet",
+    "projects": "Projects",
+    "coverage": "Coverage",
+    "news": "News",
+    "contact": "Contact"
+  },
+
+  "hero": {
+    "badge": "Marine Logistics",
+
+    "title1": "Delivering",
+    "title2": "Marine Logistics",
+    "title3": "Solutions",
+    "title4": "Across Indonesia",
+
+    "description": "Becta Logistics provides LCT vessel charter, heavy equipment transportation, project cargo and integrated marine logistics services across Indonesia.",
+
+    "primaryButton": "Contact Us",
+    "secondaryButton": "View Fleet",
+
+    "stats": {
+      "experience": "Years Experience",
+      "fleet": "Fleet Units",
+      "projects": "Projects"
+    }
+  },
+
+  "trustedClients": {
+    "badge": "Trusted Clients",
+    "title": "Trusted by Leading Companies",
+    "description": "Becta Logistics is trusted by leading companies across Indonesia to provide LCT vessel charter, heavy equipment transportation, project cargo, and integrated marine logistics solutions."
+  },
+
+  "about": {
+    "title": "About Becta Logistics",
+    "title-1": "Your Reliable Partner in Marine Transportation",
+    "year":"Year Experience",
+
+    "description": "With years of experience and a modern fleet, Becta Logistics delivers safe, efficient and on-time marine logistics solutions tailored to industrial projects across Indonesia.",
+
+    "button": "Learn More",
+
+    "features": {
+        "safety": {
+        "title": "Safety First",
+        "description": "Committed to zero accident operations."
+        },
+
+        "delivery": {
+        "title": "On-Time Delivery",
+        "description": "Reliable and punctual service."
+        },
+
+        "coverage": {
+        "title": "Nationwide Service",
+        "description": "Serving major ports across Indonesia."
+        }
+    }
+  },
+
+  "services": {
+    "title": "Our Services",
+     "badge": "Our Services",
+    "title": "Integrated Marine Logistics Solutions",
+    "description": "Becta Logistics delivers professional, safe, and reliable marine logistics services to support industrial, mining, energy, construction, and infrastructure projects throughout Indonesia.",
+
+    "readMore": "Read More",
+
+    "lctCharter": {
+      "title": "LCT Charter",
+      "description": "Landing Craft Tank (LCT) charter services for transporting heavy equipment, vehicles, construction materials, and various cargo across Indonesia."
+    },
+
+    "projectCargo": {
+      "title": "Project Cargo",
+      "description": "Professional handling and transportation of project cargo, heavy lift, oversized cargo, and industrial equipment with safe and efficient planning."
+    },
+
+    "marineLogistics": {
+      "title": "Marine Logistics",
+      "description": "Integrated marine logistics solutions to support cargo distribution, industrial operations, and project requirements across Indonesia."
+    },
+
+    "portDelivery": {
+      "title": "Port to Port Delivery",
+      "description": "Safe, flexible, and on-time port-to-port cargo transportation services for a wide range of commercial and industrial shipments."
+    },
+
+    "offshoreSupport": {
+      "title": "Offshore Support",
+      "description": "Reliable offshore logistics and transportation services for marine operations, energy exploration, offshore construction, and support activities."
+    },
+
+    "heavyEquipment": {
+      "title": "Heavy Equipment Transportation",
+      "description": "Transportation of excavators, bulldozers, cranes, dump trucks, and other heavy equipment with the highest safety standards."
+    }
+  },
+
+  "fleet": {
+    "title": "Our Fleet",
+    "description": ""
+  },
+
+  "projects": {
+    "title": "Our Projects"
+    
+  },
+  "featuredProjects": {
+      "badge": "Featured Projects",
+      "title": "Delivering Excellence in Every Project",
+      "description": "Successful marine logistics projects completed safely, professionally and on schedule.",
+      "button": "View All Projects",
+
+      "morowali": "Transporting Heavy Equipment to Morowali Industrial Area",
+      "bridge": "Bridge Construction Support Project",
+      "offshore": "Offshore Equipment Supply Project",
+      "coal": "Coal Mining Logistics Support"
+  },
+  "coverage": {
+    "title": "Coverage Area",
+    "description": ""
+  },
+
+  "contact": {
+    "title": "Contact Us",
+    "description": ""
+  },
+  
+
+  "footer": {
+    "copyright": "All rights reserved.",
+    "description": "PT Becta Logistics provides safe, reliable, and efficient Landing Craft Tank (LCT) transportation services supporting mining, construction, energy, and industrial projects across Indonesia.",
+    "quickLinks": "Quick Links",
+
+    "home": "Home",
+
+    "about": "About Us",
+
+    "services": "Services",
+
+    "fleet": "Fleet",
+
+    "projects": "Projects",
+
+    "contact": "Contact Us",
+    "contactTitle": "Contact Us",
+    "address": "Jl. Contoh No.123, North Jakarta, DKI Jakarta, Indonesia",
+    "certifications": "Certifications",
+    "certificationsDescription": "Committed to quality, safety, and compliance with international industry standards.",
+    "privacy":"Privacy Policy",
+    "terms":"Terms & Conditions"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "projects": "Projects",
+    "fleet": "Fleet",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "journey": {
+    "badge": "Our Journey",
+    "title": "Proven Experience You Can Trust",
+
+    "mining": "Mining Project",
+    "bridge": "Bridge Construction",
+    "offshore": "Offshore Supply",
+    "heavy": "Heavy Equipment",
+    "nickel": "Nickel Mining"
+  },
+  "fleet": {
+    "badge": "Our Fleet",
+    "title": "Ready To Operate Fleet",
+    "description": "Modern LCT vessels ready to support marine logistics projects across Indonesia.",
+
+    "viewAll": "View All Fleet",
+
+    "length": "Length",
+    "beam": "Beam",
+    "cargo": "Cargo Capacity",
+    "speed": "Speed",
+
+    "available": "Available",
+    "chartered": "Chartered"
+  },
+  "coverage-home": {
+    "badge": "Coverage Area",
+    "title": "Our Operational Coverage",
+    "description": "Supporting marine logistics, LCT charter and heavy equipment transportation across Indonesia.",
+    "viewMap": "View Coverage",
+    "projects": "Projects Completed",
+    "fleet": "Fleet Units",
+    "experience": "Years Experience",
+    "satisfaction": "Customer Satisfaction"
+  },
+  "cta": {
+    "title": "Let's Move Your Cargo Safely and Efficiently",
+    "description": "Get in touch with our team for the best marine logistics solution for your project.",
+    "button": "Get Free Quote"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "fleet": "Fleet",
+    "projects": "Projects",
+    "contact": "Contact",
+    "news": "News"
+  },
+  "contact-page": {
+    "badge":"CONTACT",
+    "title":"Let's Talk About Your Project",
+    "description":"Need marine transportation or LCT charter services? Our team is ready to help you with reliable and efficient logistics solutions across Indonesia.",
+
+    "addressTitle":"Office Address",
+    "address":"Jl. Raya Pelabuhan No. 88, Jakarta, Indonesia",
+
+    "phoneTitle":"Phone Number",
+
+    "emailTitle":"Email Address",
+
+    "hoursTitle":"Office Hours",
+    "office":"OFFICE LOCATION",
+
+    "findUs":"Find Our Office",
+
+    "officeDescription":"Visit our office or contact the Becta Logistics team to discuss the best marine transportation solution for your project.",
+    "formTitle": "Send Message",
+    "formDescription": "Fill out the form below and our team will contact you shortly.",
+    "name": "Full Name",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message"
+  },
+  "news-page": {
+    "badge": "LATEST NEWS",
+    "title": "Latest News & Updates",
+    "description": "Stay informed with the latest news, company updates, projects, and insights from PT Becta Logistics and Indonesia's marine logistics industry.",
+    "home": "Home",
+    "news": "News",
+    "search":"Search",
+    "searchPlaceholder":"Search article...",
+    "categories":"Categories",
+    "recentPosts":"Recent Posts",
+    "tags":"Popular Tags"
+  },
+  "news-detail": {
+    "writtenBy": "WRITTEN BY",
+    "description": "The PT Becta Logistics editorial team shares the latest updates on marine logistics, LCT transportation, company projects, and industry insights.",
+    "share": "SHARE",
+  "shareTitle": "Share This Article"
+  }
+}
