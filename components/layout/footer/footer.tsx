@@ -6,40 +6,34 @@ import FooterContact from "./footer-contact";
 import FooterCertifications from "./footer-certifications";
 import Copyright from "./copyright";
 
-const Footer = () => {
-  return (
-    <footer
-      className="
-        bg-[#071C3A]
-        text-white
-      "
-    >
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {/* Top */}
+import type { Website } from "@/types/homepage";
 
+interface FooterProps {
+  website: Website;
+}
+
+const Footer = ({ website }: FooterProps) => {
+  return (
+    <footer className="bg-[#071C3A] text-white">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div
           className="
             grid
-
             gap-10
-
             py-14
-
             lg:grid-cols-[1.6fr_.8fr_1fr_.8fr]
           "
         >
-          <FooterLogo />
+          <FooterLogo website={website} />
 
           <FooterLinks />
 
-          <FooterContact />
+          <FooterContact website={website} />
 
           <FooterCertifications />
         </div>
 
-        {/* Bottom */}
-
-        <Copyright />
+        <Copyright website={website} />
       </div>
     </footer>
   );

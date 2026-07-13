@@ -53,7 +53,7 @@ const CoverageMap = () => {
 
       {/* Button */}
 
-      <button
+      {/* <button
         className="
           absolute
           bottom-5
@@ -92,7 +92,7 @@ const CoverageMap = () => {
         {t("viewMap")}
 
         <ArrowRight size={14} />
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -17,7 +17,7 @@ const AboutPage = () => {
       <PageBanner
         title="About Us"
         description="Trusted Marine Logistics Company Serving Indonesia Through Reliable Landing Craft Tank (LCT) Transportation."
-        image="/cta/cta-bg.png"
+        image="/hero/hero-2.png"
       />
 
       <AboutSection />

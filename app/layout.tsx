@@ -14,7 +14,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Becta Logistics",
+  title: "PT Berkah Cahaya Tunggal Abadi | Becta Logistics",
   description: "Marine Logistics & LCT Charter",
 };
 

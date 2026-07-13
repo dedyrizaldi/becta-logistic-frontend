@@ -3,11 +3,14 @@ import { notFound } from "next/navigation";
 
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
+
 import TransitionProvider from "@/components/loading/transition-provider";
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
 
+import { getHomepage } from "@/services/homepage.service";
 import { routing } from "@/i18n/routing";
+
 type Props = {
   children: ReactNode;
   params: Promise<{
@@ -32,13 +35,18 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages();
 
+  // Fetch homepage data sekali saja
+  const homepage = await getHomepage();
+
   return (
     <html lang={locale}>
       <body>
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Header />
+
           <TransitionProvider>{children}</TransitionProvider>
-          <Footer />
+
+          <Footer website={homepage.website} />
         </NextIntlClientProvider>
       </body>
     </html>

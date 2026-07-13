@@ -20,7 +20,7 @@ export default async function ServicesPage() {
       <PageBanner
         title="Our Services"
         description="Comprehensive marine transportation solutions across Indonesia."
-        image="/cta/cta-bg.png"
+        image="/hero/hero-1.png"
       />
 
       <Services services={homepage.featured_services ?? []} />

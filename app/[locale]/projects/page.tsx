@@ -20,7 +20,7 @@ export default async function ProjectsPage() {
       <PageBanner
         title="Our Projects"
         description="Explore our completed marine logistics projects across Indonesia."
-        image="/cta/cta-bg.png"
+        image="/hero/hero-1.png"
       />
 
       <FeatureProject projects={homepage.featured_projects} />

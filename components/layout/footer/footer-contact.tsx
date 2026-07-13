@@ -1,110 +1,77 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin, Globe } from "lucide-react";
-import { useTranslations } from "next-intl";
 
-const FooterContact = () => {
-  const t = useTranslations("footer");
+import { Clock3, Mail, MapPin, Phone } from "lucide-react";
 
+import type { Website } from "@/types/homepage";
+
+interface FooterContactProps {
+  website: Website;
+}
+
+const FooterContact = ({ website }: FooterContactProps) => {
   return (
     <div>
-      {/* Title */}
+      <h3 className="mb-6 text-lg font-bold">Contact Us</h3>
 
-      <h3
-        className="
-          mb-6
+      <div className="space-y-5 text-sm">
+        {website.address && (
+          <div className="flex items-start gap-3">
+            <MapPin className="mt-1 shrink-0 text-[#D8A41D]" size={18} />
 
-          text-lg
-          font-bold
+            <span className="leading-6 text-white/70">{website.address}</span>
+          </div>
+        )}
 
-          text-white
-        "
-      >
-        {t("contactTitle")}
-      </h3>
+        {website.whatsapp && (
+          <div className="flex items-center gap-3">
+            <Phone className="shrink-0 text-[#D8A41D]" size={18} />
 
-      <div className="space-y-5">
-        {/* Address */}
+            <Link
+              href={`tel:${website.whatsapp}`}
+              className="text-white/70 transition hover:text-white"
+            >
+              {website.whatsapp}
+            </Link>
+          </div>
+        )}
 
-        <div className="flex items-start gap-3">
-          <MapPin size={18} className="mt-1 shrink-0 text-[#D8A41D]" />
+        {website.mobile && (
+          <div className="flex items-center gap-3">
+            <Phone className="shrink-0 text-[#D8A41D]" size={18} />
 
-          <p
-            className="
-              text-sm
-              leading-6
+            <Link
+              href={`tel:${website.mobile}`}
+              className="text-white/70 transition hover:text-white"
+            >
+              {website.mobile}
+            </Link>
+          </div>
+        )}
 
-              text-white/70
-            "
-          >
-            {t("address")}
-          </p>
-        </div>
+        {website.email && (
+          <div className="flex items-center gap-3">
+            <Mail className="shrink-0 text-[#D8A41D]" size={18} />
 
-        {/* Phone */}
+            <Link
+              href={`mailto:${website.email}`}
+              className="text-white/70 transition hover:text-white"
+            >
+              {website.email}
+            </Link>
+          </div>
+        )}
 
-        <div className="flex items-center gap-3">
-          <Phone size={18} className="shrink-0 text-[#D8A41D]" />
+        {website.office_hours && (
+          <div className="flex items-start gap-3">
+            <Clock3 className="mt-1 shrink-0 text-[#D8A41D]" size={18} />
 
-          <Link
-            href="tel:+6281234567890"
-            className="
-              text-sm
-
-              text-white/70
-
-              transition-colors
-
-              hover:text-[#D8A41D]
-            "
-          >
-            +62 812-3456-7890
-          </Link>
-        </div>
-
-        {/* Email */}
-
-        <div className="flex items-center gap-3">
-          <Mail size={18} className="shrink-0 text-[#D8A41D]" />
-
-          <Link
-            href="mailto:info@bectalogistics.com"
-            className="
-              text-sm
-
-              text-white/70
-
-              transition-colors
-
-              hover:text-[#D8A41D]
-            "
-          >
-            info@bectalogistics.com
-          </Link>
-        </div>
-
-        {/* Website */}
-
-        <div className="flex items-center gap-3">
-          <Globe size={18} className="shrink-0 text-[#D8A41D]" />
-
-          <Link
-            href="https://www.bectalogistics.com"
-            target="_blank"
-            className="
-              text-sm
-
-              text-white/70
-
-              transition-colors
-
-              hover:text-[#D8A41D]
-            "
-          >
-            www.bectalogistics.com
-          </Link>
-        </div>
+            <span className="leading-6 text-white/70">
+              {website.office_hours}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

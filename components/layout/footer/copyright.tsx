@@ -1,11 +1,12 @@
 "use client";
 
-import Link from "next/link";
-import { useTranslations } from "next-intl";
+import type { Website } from "@/types/homepage";
 
-const Copyright = () => {
-  const t = useTranslations("footer");
+interface CopyrightProps {
+  website: Website;
+}
 
+const Copyright = ({ website }: CopyrightProps) => {
   return (
     <div
       className="
@@ -21,51 +22,20 @@ const Copyright = () => {
         py-6
 
         text-sm
-
         text-white/60
 
         md:flex-row
       "
     >
-      {/* Copyright */}
-
-      <p className="text-center md:text-left">
-        © {new Date().getFullYear()} Becta Logistics. {t("copyright")}
+      <p>
+        {website.copyright ??
+          `© ${new Date().getFullYear()} ${website.company_name}. All rights reserved.`}
       </p>
 
-      {/* Links */}
-
-      <div
-        className="
-          flex
-          items-center
-          gap-6
-        "
-      >
-        <Link
-          href="/privacy-policy"
-          className="
-            transition-colors
-            duration-300
-
-            hover:text-[#D8A41D]
-          "
-        >
-          {t("privacy")}
-        </Link>
-
-        <Link
-          href="/terms"
-          className="
-            transition-colors
-            duration-300
-
-            hover:text-[#D8A41D]
-          "
-        >
-          {t("terms")}
-        </Link>
-      </div>
+      <p>
+        Powered by{" "}
+        <span className="font-semibold text-[#D8A41D]">Becta Logistics</span>
+      </p>
     </div>
   );
 };

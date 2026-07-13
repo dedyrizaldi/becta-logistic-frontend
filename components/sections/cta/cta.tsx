@@ -26,7 +26,7 @@ const CTA = () => {
         lg:h-[280px]"
       >
         <Image
-          src="/cta/cta-bg.png"
+          src="/hero/hero-2.png"
           alt="Becta Logistics"
           fill
           priority

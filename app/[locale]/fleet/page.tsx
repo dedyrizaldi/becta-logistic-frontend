@@ -20,7 +20,7 @@ export default async function FleetPage() {
       <PageBanner
         title="Our Fleet"
         description="Discover our diverse and modern fleet of marine vessels."
-        image="/cta/cta-bg.png"
+        image="/hero/hero-3.png"
       />
 
       <FleetSection fleets={homepage.featured_fleets} />

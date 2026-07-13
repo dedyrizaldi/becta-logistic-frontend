@@ -20,7 +20,7 @@ export default function ContactPage() {
       <PageBanner
         title="Contact Us"
         description="Get in touch with our marine logistics specialists."
-        image="/cta/cta-bg.png"
+        image="/hero/hero-3.png"
       />
 
       <section className="py-24">

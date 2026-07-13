@@ -16,7 +16,7 @@ const NewsHero = () => {
       {/* Background */}
 
       <Image
-        src="/cta/cta-bg.png"
+        src="/hero/hero-3.png"
         alt={t("title")}
         fill
         priority
@@ -30,15 +30,15 @@ const NewsHero = () => {
 
       {/* Gradient */}
 
-      <div className="absolute inset-0 bg-gradient-to-r from-[#071C3A] via-[#071C3A]/70 to-transparent" />
+      {/* <div className="absolute inset-0 bg-gradient-to-r from-[#071C3A] via-[#071C3A]/70 to-transparent" /> */}
 
       {/* Gold Light */}
 
-      <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-[#D8A41D]/10 blur-3xl" />
+      {/* <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-[#D8A41D]/10 blur-3xl" /> */}
 
       {/* Bottom Fade */}
 
-      <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/70 to-transparent" />
+      {/* <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/70 to-transparent" /> */}
 
       {/* Content */}
 

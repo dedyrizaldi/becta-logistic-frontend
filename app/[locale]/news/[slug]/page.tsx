@@ -55,7 +55,6 @@ export default async function NewsDetailPage({ params }: NewsDetailPageProps) {
   }
 
   const news = response.data.news;
-  console.log(news.gallery);
 
   const relatedNews = response.data.related_news;
 

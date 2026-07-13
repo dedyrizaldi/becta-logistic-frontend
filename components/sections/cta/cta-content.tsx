@@ -57,7 +57,7 @@ const CTAContent = () => {
 
       {/* Button */}
 
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{
@@ -110,7 +110,7 @@ const CTAContent = () => {
             "
           />
         </Link>
-      </motion.div>
+      </motion.div> */}
     </div>
   );
 };
