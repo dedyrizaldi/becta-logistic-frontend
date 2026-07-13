@@ -1,17 +1,18 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+
 import { ArrowRight } from "lucide-react";
-import { useTranslations } from "next-intl";
+
+import type { Service } from "@/types/homepage";
+import { mediaUrl } from "@/lib/media";
 
 interface ServiceCardProps {
-  serviceKey: string;
-  image: string;
+  service: Service;
 }
 
-const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
-  const t = useTranslations("services");
-
+const ServiceCard = ({ service }: ServiceCardProps) => {
   return (
     <article
       className="
@@ -53,7 +54,7 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
         "
       />
 
-      {/* Icon */}
+      {/* Thumbnail */}
 
       <div className="flex justify-center">
         <div
@@ -67,7 +68,7 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
             bg-[#0B2F63]/5
             transition-all
             duration-300
-            bacground-white
+
             group-hover:bg-[#D8A41D]/10
 
             lg:h-16
@@ -75,8 +76,8 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
           "
         >
           <Image
-            src={image}
-            alt={t(`${serviceKey}.title`)}
+            src={mediaUrl(service.thumbnail)}
+            alt={service.title}
             width={50}
             height={50}
             className="
@@ -85,7 +86,7 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
               object-contain
               transition-transform
               duration-300
-              background-transparent
+
               group-hover:scale-110
 
               lg:h-12
@@ -95,11 +96,27 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
         </div>
       </div>
 
+      {/* Category */}
+
+      <p
+        className="
+          mt-4
+          text-center
+          text-[10px]
+          font-bold
+          uppercase
+          tracking-[0.25em]
+          text-[#D8A41D]
+        "
+      >
+        {service.category.name}
+      </p>
+
       {/* Title */}
 
       <h3
         className="
-          mt-4
+          mt-2
           text-center
           text-[13px]
           font-bold
@@ -108,12 +125,11 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
           tracking-wide
           text-[#0B2F63]
 
-          lg:mt-5
           lg:text-[15px]
           lg:leading-6
         "
       >
-        {t(`${serviceKey}.title`)}
+        {service.title}
       </h3>
 
       {/* Description */}
@@ -132,12 +148,13 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
           lg:leading-6
         "
       >
-        {t(`${serviceKey}.description`)}
+        {service.excerpt}
       </p>
 
       {/* Read More */}
-
-      <button
+      {/* 
+      <Link
+        href={`/services/${service.slug}`}
         className="
           mt-auto
           flex
@@ -161,8 +178,7 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
           lg:text-xs
         "
       >
-        {t("readMore")}
-
+        Read More
         <ArrowRight
           size={14}
           className="
@@ -172,7 +188,7 @@ const ServiceCard = ({ serviceKey, image }: ServiceCardProps) => {
             group-hover:translate-x-1
           "
         />
-      </button>
+      </Link> */}
     </article>
   );
 };

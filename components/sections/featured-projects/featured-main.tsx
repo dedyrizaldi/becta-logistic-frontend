@@ -1,11 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
-import { useTranslations } from "next-intl";
+import Link from "next/link";
 
-const FeaturedMain = () => {
-  const t = useTranslations("featuredProjects");
+import { ArrowRight, CalendarDays, MapPin } from "lucide-react";
+
+import type { Project } from "@/types/homepage";
+
+import { mediaUrl } from "@/lib/media";
+
+interface FeaturedMainProps {
+  projects: Project[];
+  activeProject: number;
+}
+const FeaturedMain = ({ projects, activeProject }: FeaturedMainProps) => {
+  const project = projects[activeProject];
+  if (!project) return null;
 
   return (
     <article
@@ -21,10 +31,11 @@ const FeaturedMain = () => {
       {/* Image */}
 
       <Image
-        src="/projects/project-1.png"
-        alt={t("morowali")}
+        src={mediaUrl(project.thumbnail)}
+        alt={project.title}
         width={900}
         height={600}
+        priority
         className="
           h-full
           min-h-[300px]
@@ -34,7 +45,6 @@ const FeaturedMain = () => {
           object-cover
           transition-transform
           duration-700
-
           group-hover:scale-105
         "
       />
@@ -61,7 +71,6 @@ const FeaturedMain = () => {
           top-5
 
           rounded-full
-
           bg-[#D8A41D]
 
           px-3
@@ -75,7 +84,7 @@ const FeaturedMain = () => {
           text-[#071C3A]
         "
       >
-        FEATURED
+        {project.category.name}
       </div>
 
       {/* Content */}
@@ -87,24 +96,27 @@ const FeaturedMain = () => {
           bottom-0
 
           p-5
-
           lg:p-6
         "
       >
         <h3
           className="
             max-w-md
-
             text-[22px]
             font-bold
             leading-tight
             text-white
-
             lg:text-[26px]
           "
         >
-          {t("morowali")}
+          {project.title}
         </h3>
+
+        {/* Client */}
+
+        <p className="mt-3 text-sm text-[#D8A41D] font-semibold">
+          {project.client}
+        </p>
 
         {/* Meta */}
 
@@ -121,21 +133,27 @@ const FeaturedMain = () => {
         >
           <div className="flex items-center gap-2">
             <MapPin size={14} className="text-[#D8A41D]" />
-            Morowali, Sulawesi Tengah
+
+            {project.location}
           </div>
 
           <div className="flex items-center gap-2">
             <CalendarDays size={14} className="text-[#D8A41D]" />
-            May 2024
+
+            {new Date(project.completed_at).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </div>
         </div>
 
-        {/* Arrow */}
+        {/* Button */}
 
-        <button
+        <Link
+          href={`/projects/${project.slug}`}
           className="
             absolute
-
             bottom-5
             right-5
 
@@ -146,7 +164,6 @@ const FeaturedMain = () => {
             justify-center
 
             rounded-full
-
             bg-[#D8A41D]
 
             transition-all
@@ -156,7 +173,7 @@ const FeaturedMain = () => {
           "
         >
           <ArrowRight size={18} className="text-[#071C3A]" />
-        </button>
+        </Link>
       </div>
     </article>
   );

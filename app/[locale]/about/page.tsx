@@ -1,8 +1,6 @@
 import PageBanner from "@/components/common/page-banner/page-banner";
 
 import AboutSection from "@/components/sections/about/about";
-import JourneySection from "@/components/sections/journey/journey";
-import FleetSection from "@/components/sections/fleet/fleet";
 import CTASection from "@/components/sections/cta/cta";
 import { createMetadata } from "@/lib/seo";
 
@@ -23,10 +21,6 @@ const AboutPage = () => {
       />
 
       <AboutSection />
-
-      <JourneySection />
-
-      <FleetSection />
 
       <CTASection />
     </>

@@ -1,8 +1,22 @@
+"use client";
+
+import { useState } from "react";
+
+import type { Project } from "@/types/homepage";
+
 import FeaturedHeader from "./featured-header";
 import FeaturedMain from "./featured-main";
 import FeaturedList from "./featured-list";
 
-const FeaturedProjects = () => {
+interface FeaturedProjectsProps {
+  projects: Project[];
+}
+
+const FeaturedProjects = ({ projects }: FeaturedProjectsProps) => {
+  const [activeProject, setActiveProject] = useState(0);
+
+  if (!projects.length) return null;
+
   return (
     <section
       id="projects"
@@ -33,9 +47,13 @@ const FeaturedProjects = () => {
         >
           <FeaturedHeader />
 
-          <FeaturedMain />
+          <FeaturedMain projects={projects} activeProject={activeProject} />
 
-          <FeaturedList />
+          <FeaturedList
+            projects={projects}
+            activeProject={activeProject}
+            onSelect={setActiveProject}
+          />
         </div>
       </div>
     </section>

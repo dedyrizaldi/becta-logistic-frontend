@@ -2,45 +2,56 @@
 
 import Image from "next/image";
 import Link from "next/link";
+
 import { Search } from "lucide-react";
 import { useTranslations } from "next-intl";
 
-import { dummyNews } from "./dummy-news";
+import type { News } from "@/types/homepage";
+import { mediaUrl } from "@/lib/media";
 
-const categories = [
-  {
-    name: "Projects",
-    total: 8,
-  },
-  {
-    name: "Company",
-    total: 4,
-  },
-  {
-    name: "Services",
-    total: 6,
-  },
-  {
-    name: "Logistics",
-    total: 9,
-  },
-  {
-    name: "Safety",
-    total: 3,
-  },
-];
+interface NewsSidebarProps {
+  news: News[];
+}
 
-const tags = [
-  "LCT",
-  "Marine",
-  "Shipping",
-  "Heavy Equipment",
-  "Logistics",
-  "Indonesia",
-];
-
-const NewsSidebar = () => {
+const NewsSidebar = ({ news }: NewsSidebarProps) => {
   const t = useTranslations("news-page");
+
+  // Hitung kategori otomatis dari data API
+  const categories = Object.values(
+    news.reduce(
+      (acc, item) => {
+        const key = item.category.slug;
+
+        if (!acc[key]) {
+          acc[key] = {
+            name: item.category.name,
+            total: 0,
+          };
+        }
+
+        acc[key].total++;
+
+        return acc;
+      },
+      {} as Record<
+        string,
+        {
+          name: string;
+          total: number;
+        }
+      >,
+    ),
+  );
+
+  // Tags sementara
+  const tags = [
+    "LCT",
+    "Marine",
+    "Shipping",
+    "Heavy Equipment",
+    "Logistics",
+    "Indonesia",
+  ];
 
   return (
     <aside className="space-y-8">
@@ -98,14 +109,10 @@ const NewsSidebar = () => {
                 w-full
                 items-center
                 justify-between
-
                 rounded-xl
-
                 px-4
                 py-3
-
                 transition
-
                 hover:bg-[#D8A41D]
                 hover:text-white
               "
@@ -136,16 +143,16 @@ const NewsSidebar = () => {
         </h3>
 
         <div className="space-y-5">
-          {dummyNews.slice(0, 4).map((news) => (
+          {news.slice(0, 4).map((item) => (
             <Link
-              key={news.id}
-              href={`/news/${news.slug}`}
-              className="flex gap-4 group"
+              key={item.id}
+              href={`/news/${item.slug}`}
+              className="group flex gap-4"
             >
               <div className="relative h-20 w-20 overflow-hidden rounded-xl">
                 <Image
-                  src={news.image}
-                  alt={news.title}
+                  src={mediaUrl(item.thumbnail)}
+                  alt={item.title}
                   fill
                   className="object-cover transition duration-300 group-hover:scale-110"
                 />
@@ -161,11 +168,15 @@ const NewsSidebar = () => {
                     group-hover:text-[#D8A41D]
                   "
                 >
-                  {news.title}
+                  {item.title}
                 </h4>
 
                 <p className="mt-2 text-sm text-slate-500">
-                  {news.publishedAt}
+                  {new Date(item.published_at).toLocaleDateString("en-US", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
                 </p>
               </div>
             </Link>
@@ -184,17 +195,12 @@ const NewsSidebar = () => {
               key={tag}
               className="
                 rounded-full
-
                 border
                 border-slate-200
-
                 px-4
                 py-2
-
                 text-sm
-
                 transition
-
                 hover:border-[#D8A41D]
                 hover:bg-[#D8A41D]
                 hover:text-white

@@ -1,10 +1,14 @@
-"use client";
+import type { News } from "@/types/homepage";
 
 import NewsGrid from "./news-grid";
 import NewsPagination from "./news-pagination";
 import NewsSidebar from "./news-sidebar";
 
-const NewsSection = () => {
+interface NewsSectionProps {
+  news: News[];
+}
+
+const NewsSection = ({ news }: NewsSectionProps) => {
   return (
     <section className="py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -12,7 +16,7 @@ const NewsSection = () => {
           {/* News */}
 
           <div className="lg:col-span-8">
-            <NewsGrid />
+            <NewsGrid news={news} />
 
             <div className="mt-14">
               <NewsPagination />
@@ -23,7 +27,7 @@ const NewsSection = () => {
 
           <div className="lg:col-span-4">
             <div className="sticky top-28">
-              <NewsSidebar />
+              <NewsSidebar news={news} />
             </div>
           </div>
         </div>

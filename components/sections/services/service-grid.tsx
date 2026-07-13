@@ -1,9 +1,14 @@
 "use client";
 
-import { services } from "@/constants/services";
+import type { Service } from "@/types/homepage";
+
 import ServiceCard from "./service-card";
 
-const ServiceGrid = () => {
+interface ServiceGridProps {
+  services: Service[];
+}
+
+const ServiceGrid = ({ services }: ServiceGridProps) => {
   return (
     <div
       className="
@@ -18,11 +23,7 @@ const ServiceGrid = () => {
       "
     >
       {services.map((service) => (
-        <ServiceCard
-          key={service.key}
-          serviceKey={service.key}
-          image={service.image}
-        />
+        <ServiceCard key={service.id} service={service} />
       ))}
     </div>
   );

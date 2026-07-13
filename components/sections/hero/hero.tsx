@@ -1,9 +1,19 @@
 "use client";
 
+import { useState } from "react";
+
+import type { Hero as HeroType } from "@/types/homepage";
+
 import HeroContent from "./hero-content";
 import HeroSlider from "./hero-slider";
 
-const Hero = () => {
+interface HeroProps {
+  hero: HeroType[];
+}
+
+const Hero = ({ hero }: HeroProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   return (
     <section
       className="
@@ -18,11 +28,11 @@ const Hero = () => {
         xl:h-[620px]
       "
     >
-      {/* Background Slider */}
-
-      <HeroSlider />
-
-      {/* Left Gradient Overlay */}
+      <HeroSlider
+        hero={hero}
+        selectedIndex={selectedIndex}
+        onChange={setSelectedIndex}
+      />
 
       <div
         className="absolute inset-0 z-10"
@@ -40,8 +50,6 @@ const Hero = () => {
         }}
       />
 
-      {/* Content */}
-
       <div
         className="
           relative
@@ -52,19 +60,13 @@ const Hero = () => {
           w-full
           max-w-[1400px]
           items-center
-
           px-5
           md:px-10
           xl:px-14
         "
       >
-        <div
-          className="
-            w-full
-            max-w-[560px]
-          "
-        >
-          <HeroContent />
+        <div className="w-full max-w-[560px]">
+          <HeroContent hero={hero} selectedIndex={selectedIndex} />
         </div>
       </div>
     </section>

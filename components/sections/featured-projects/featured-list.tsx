@@ -1,24 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import type { Project } from "@/types/homepage";
 
-import { projects } from "@/constants/projects";
 import ProjectItem from "./project-item";
 
-const FeaturedList = () => {
-  const [activeProject, setActiveProject] = useState(0);
+interface FeaturedListProps {
+  projects: Project[];
+  activeProject: number;
+  onSelect: (index: number) => void;
+}
 
+const FeaturedList = ({
+  projects,
+  activeProject,
+  onSelect,
+}: FeaturedListProps) => {
   return (
-    <div className="flex flex-col gap-5">
+    <div
+      className="
+          flex
+          max-h-[430px]
+          flex-col
+          gap-5
+          overflow-y-auto
+          pr-2
+          scrollbar-thin
+          scrollbar-thumb-[#D8A41D]
+          scrollbar-track-white/10
+          mb-5
+        "
+    >
       {projects.map((project, index) => (
         <ProjectItem
           key={project.id}
-          image={project.image}
-          titleKey={project.titleKey}
-          location={project.location}
-          date={project.date}
+          project={project}
           active={index === activeProject}
-          onClick={() => setActiveProject(index)}
+          onClick={() => onSelect(index)}
         />
       ))}
     </div>

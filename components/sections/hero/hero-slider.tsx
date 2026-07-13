@@ -1,14 +1,21 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import Image from "next/image";
 
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 
-import { heroSlides } from "@/constants/hero";
+import type { Hero as HeroType } from "@/types/homepage";
+import { mediaUrl } from "@/lib/media";
 
-const HeroSlider = () => {
+interface HeroSliderProps {
+  hero: HeroType[];
+  selectedIndex: number;
+  onChange: (index: number) => void;
+}
+
+const HeroSlider = ({ hero, selectedIndex, onChange }: HeroSliderProps) => {
   const autoplay = Autoplay({
     delay: 5000,
     stopOnInteraction: false,
@@ -23,18 +30,15 @@ const HeroSlider = () => {
     [autoplay],
   );
 
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
 
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+    onChange(emblaApi.selectedScrollSnap());
+  }, [emblaApi, onChange]);
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     onSelect();
 
     emblaApi.on("select", onSelect);
@@ -52,16 +56,16 @@ const HeroSlider = () => {
 
       <div ref={emblaRef} className="absolute inset-0 overflow-hidden">
         <div className="flex h-full">
-          {heroSlides.map((slide) => (
+          {hero.map((slide, index) => (
             <div
               key={slide.id}
               className="relative h-full min-w-0 flex-[0_0_100%]"
             >
               <Image
-                src={slide.image}
+                src={mediaUrl(slide.desktop_image)}
                 alt={slide.title}
                 fill
-                priority={slide.id === 1}
+                priority={index === 0}
                 sizes="100vw"
                 className="
                   object-cover
@@ -74,11 +78,11 @@ const HeroSlider = () => {
         </div>
       </div>
 
-      {/* Soft Dark Overlay */}
+      {/* Overlay */}
 
       <div className="absolute inset-0 bg-black/5" />
 
-      {/* Bottom Indicator */}
+      {/* Indicator */}
 
       <div
         className="
@@ -92,9 +96,9 @@ const HeroSlider = () => {
           gap-5
         "
       >
-        {heroSlides.map((_, index) => (
+        {hero.map((slide, index) => (
           <button
-            key={index}
+            key={slide.id}
             onClick={() => emblaApi?.scrollTo(index)}
             className="flex items-center gap-3"
           >

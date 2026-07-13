@@ -88,7 +88,7 @@ const FleetHeader = () => {
           font-semibold
           uppercase
           tracking-wider
-
+          text-white
           hover:bg-[#08254F]
         "
       >

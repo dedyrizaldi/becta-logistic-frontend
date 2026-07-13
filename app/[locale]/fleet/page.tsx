@@ -3,6 +3,7 @@ import CTA from "@/components/sections/cta/cta";
 import FleetSection from "@/components/sections/fleet/fleet";
 
 import { createMetadata } from "@/lib/seo";
+import { getHomepage } from "@/services/homepage.service";
 
 export const metadata = createMetadata({
   title: "Our Fleet | PT Becta Logistics",
@@ -11,7 +12,9 @@ export const metadata = createMetadata({
   path: "/fleet",
 });
 
-export default function FleetPage() {
+export default async function FleetPage() {
+  const homepage = await getHomepage();
+
   return (
     <>
       <PageBanner
@@ -20,7 +23,7 @@ export default function FleetPage() {
         image="/cta/cta-bg.png"
       />
 
-      <FleetSection />
+      <FleetSection fleets={homepage.featured_fleets} />
       <CTA />
     </>
   );

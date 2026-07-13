@@ -79,7 +79,7 @@ const AboutContent = () => {
       </div>
 
       {/* Button */}
-
+      {/* 
       <div className="mt-10">
         <Button
           className="
@@ -91,13 +91,14 @@ const AboutContent = () => {
             font-semibold
             uppercase
             hover:bg-[#08254F]
+            text-white
           "
         >
           {t("button")}
 
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
-      </div>
+      </div> */}
     </div>
   );
 };

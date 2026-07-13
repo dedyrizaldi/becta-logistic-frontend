@@ -3,6 +3,7 @@ import CTA from "@/components/sections/cta/cta";
 import FeatureProject from "@/components/sections/featured-projects/featured-projects";
 
 import { createMetadata } from "@/lib/seo";
+import { getHomepage } from "@/services/homepage.service";
 
 export const metadata = createMetadata({
   title: "Our Projects | PT Becta Logistics",
@@ -11,7 +12,9 @@ export const metadata = createMetadata({
   path: "/projects",
 });
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const homepage = await getHomepage();
+
   return (
     <>
       <PageBanner
@@ -20,7 +23,7 @@ export default function ProjectsPage() {
         image="/cta/cta-bg.png"
       />
 
-      <FeatureProject />
+      <FeatureProject projects={homepage.featured_projects} />
 
       <CTA />
     </>

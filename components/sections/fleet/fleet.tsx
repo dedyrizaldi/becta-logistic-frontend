@@ -1,7 +1,15 @@
+import type { Fleet } from "@/types/homepage";
+
 import FleetHeader from "./fleet-header";
 import FleetSlider from "./fleet-slider";
 
-const Fleet = () => {
+interface FleetSectionProps {
+  fleets: Fleet[];
+}
+
+const FleetSection = ({ fleets }: FleetSectionProps) => {
+  if (!fleets.length) return null;
+
   return (
     <section
       id="fleet"
@@ -24,11 +32,11 @@ const Fleet = () => {
         <FleetHeader />
 
         <div className="mt-12">
-          <FleetSlider />
+          <FleetSlider fleets={fleets} />
         </div>
       </div>
     </section>
   );
 };
 
-export default Fleet;
+export default FleetSection;

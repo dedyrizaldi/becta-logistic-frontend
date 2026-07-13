@@ -3,6 +3,8 @@ import { createMetadata } from "@/lib/seo";
 import PageBanner from "@/components/common/page-banner/page-banner";
 import NewsSection from "@/components/sections/news";
 
+import { getNews } from "@/services/news.service";
+
 export const metadata = createMetadata({
   title: "News | PT Becta Logistics",
   description:
@@ -10,7 +12,9 @@ export const metadata = createMetadata({
   path: "/news",
 });
 
-export default function NewsPage() {
+export default async function NewsPage() {
+  const response = await getNews();
+
   return (
     <>
       <PageBanner
@@ -19,7 +23,7 @@ export default function NewsPage() {
         image="/cta/cta-bg.png"
       />
 
-      <NewsSection />
+      <NewsSection news={response.data} />
     </>
   );
 }

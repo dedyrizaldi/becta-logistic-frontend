@@ -2,12 +2,16 @@
 
 import useEmblaCarousel from "embla-carousel-react";
 
-import { fleet } from "@/constants/fleet";
+import type { Fleet } from "@/types/homepage";
 
 import FleetCard from "./fleet-card";
 import FleetNavigation from "./fleet-navigation";
 
-const FleetSlider = () => {
+interface FleetSliderProps {
+  fleets: Fleet[];
+}
+
+const FleetSlider = ({ fleets }: FleetSliderProps) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "start",
@@ -20,9 +24,9 @@ const FleetSlider = () => {
 
       <div ref={emblaRef} className="overflow-hidden">
         <div className="flex">
-          {fleet.map((item) => (
+          {fleets.map((fleet) => (
             <div
-              key={item.id}
+              key={fleet.id}
               className="
                 min-w-0
                 flex-[0_0_100%]
@@ -34,15 +38,7 @@ const FleetSlider = () => {
                 xl:flex-[0_0_25%]
               "
             >
-              <FleetCard
-                image={item.image}
-                name={item.name}
-                length={item.length}
-                beam={item.beam}
-                cargo={item.cargo}
-                speed={item.speed}
-                status={item.status.toString() as "available" | "chartered"}
-              />
+              <FleetCard fleet={fleet} />
             </div>
           ))}
         </div>

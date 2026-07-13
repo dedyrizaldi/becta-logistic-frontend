@@ -3,11 +3,13 @@ import TrustedClients from "@/components/sections/trusted-clients/trusted-client
 import About from "@/components/sections/about/about";
 import Services from "@/components/sections/services/services";
 import FeaturedProjects from "@/components/sections/featured-projects/featured-projects";
-import Journey from "@/components/sections/journey/journey";
 import Fleet from "@/components/sections/fleet/fleet";
 import Coverage from "@/components/sections/coverage/coverage";
 import Cta from "@/components/sections/cta/cta";
+
 import { createMetadata } from "@/lib/seo";
+import { getHomepage } from "@/services/homepage.service";
+
 import type { Metadata } from "next";
 
 export const newMetaData: Metadata = {
@@ -23,17 +25,25 @@ export const metadata = createMetadata({
   path: "/",
 });
 
-export default function HomePage() {
+export default async function HomePage() {
+  const homepage = await getHomepage();
+
   return (
     <main>
-      <Hero />
-      <TrustedClients />
+      <Hero hero={homepage.hero} />
+
+      <TrustedClients clients={homepage.trusted_clients} />
+
       <About />
-      <Services />
-      <FeaturedProjects />
-      <Journey />
-      <Fleet />
+
+      <Services services={homepage.featured_services} />
+
+      <FeaturedProjects projects={homepage.featured_projects} />
+
+      <Fleet fleets={homepage.featured_fleets} />
+
       <Coverage />
+
       <Cta />
     </main>
   );
