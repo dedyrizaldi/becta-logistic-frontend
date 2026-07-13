@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-import type { News } from "@/types/homepage";
+import type { News } from "@/types/news";
 
 import NewsCard from "./news-card";
 
@@ -13,7 +13,13 @@ interface NewsGridProps {
 const NewsGrid = ({ news }: NewsGridProps) => {
   if (!news.length) {
     return (
-      <div className="py-20 text-center text-slate-500">No news available.</div>
+      <div className="rounded-2xl border border-dashed border-slate-300 py-20 text-center">
+        <h3 className="text-2xl font-bold text-[#071C3A]">No News Found</h3>
+
+        <p className="mt-3 text-slate-500">
+          There are currently no news articles available.
+        </p>
+      </div>
     );
   }
 
@@ -33,7 +39,7 @@ const NewsGrid = ({ news }: NewsGridProps) => {
           key={item.id}
           initial={{
             opacity: 0,
-            y: 40,
+            y: 30,
           }}
           whileInView={{
             opacity: 1,

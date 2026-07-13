@@ -3,10 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { useEffect, useState } from "react";
+
 import { Search } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-import type { News } from "@/types/homepage";
+import type { News } from "@/types/news";
 import { mediaUrl } from "@/lib/media";
 
 interface NewsSidebarProps {
@@ -16,26 +19,66 @@ interface NewsSidebarProps {
 const NewsSidebar = ({ news }: NewsSidebarProps) => {
   const t = useTranslations("news-page");
 
-  // Hitung kategori otomatis dari data API
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
+  const [keyword, setKeyword] = useState(() => searchParams.get("q") ?? "");
+
+  /**
+   * Auto Search (Debounce)
+   */
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const currentKeyword = searchParams.get("q") ?? "";
+      const nextKeyword = keyword.trim();
+
+      // Tidak melakukan request jika keyword tidak berubah
+      if (currentKeyword === nextKeyword) {
+        return;
+      }
+
+      const params = new URLSearchParams(searchParams.toString());
+
+      if (nextKeyword) {
+        params.set("q", nextKeyword);
+      } else {
+        params.delete("q");
+      }
+
+      params.delete("page");
+
+      const query = params.toString();
+
+      router.replace(query ? `${pathname}?${query}` : pathname, {
+        scroll: false,
+      });
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [keyword, pathname, router, searchParams]);
+
   const categories = Object.values(
     news.reduce(
       (acc, item) => {
-        const key = item.category.slug;
+        const slug = item.category.slug;
 
-        if (!acc[key]) {
-          acc[key] = {
+        if (!acc[slug]) {
+          acc[slug] = {
+            slug,
             name: item.category.name,
             total: 0,
           };
         }
 
-        acc[key].total++;
+        acc[slug].total++;
 
         return acc;
       },
       {} as Record<
         string,
         {
+          slug: string;
           name: string;
           total: number;
         }
@@ -43,7 +86,6 @@ const NewsSidebar = ({ news }: NewsSidebarProps) => {
     ),
   );
 
-  // Tags sementara
   const tags = [
     "LCT",
     "Marine",
@@ -63,6 +105,8 @@ const NewsSidebar = ({ news }: NewsSidebarProps) => {
         <div className="relative">
           <input
             type="text"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
             placeholder={t("searchPlaceholder")}
             className="
               h-12
@@ -80,16 +124,18 @@ const NewsSidebar = ({ news }: NewsSidebarProps) => {
             "
           />
 
-          <Search
-            size={18}
+          <div
             className="
+              pointer-events-none
               absolute
               right-4
               top-1/2
               -translate-y-1/2
               text-slate-400
             "
-          />
+          >
+            <Search size={18} />
+          </div>
         </div>
       </div>
 
@@ -103,7 +149,7 @@ const NewsSidebar = ({ news }: NewsSidebarProps) => {
         <div className="space-y-3">
           {categories.map((category) => (
             <button
-              key={category.name}
+              key={category.slug}
               className="
                 flex
                 w-full
@@ -119,15 +165,7 @@ const NewsSidebar = ({ news }: NewsSidebarProps) => {
             >
               <span>{category.name}</span>
 
-              <span
-                className="
-                  rounded-full
-                  bg-slate-100
-                  px-3
-                  py-1
-                  text-xs
-                "
-              >
+              <span className="rounded-full bg-slate-100 px-3 py-1 text-xs">
                 {category.total}
               </span>
             </button>
@@ -159,20 +197,12 @@ const NewsSidebar = ({ news }: NewsSidebarProps) => {
               </div>
 
               <div className="flex-1">
-                <h4
-                  className="
-                    line-clamp-2
-                    font-semibold
-                    text-[#071C3A]
-                    transition
-                    group-hover:text-[#D8A41D]
-                  "
-                >
+                <h4 className="line-clamp-2 font-semibold text-[#071C3A] transition group-hover:text-[#D8A41D]">
                   {item.title}
                 </h4>
 
                 <p className="mt-2 text-sm text-slate-500">
-                  {new Date(item.published_at).toLocaleDateString("en-US", {
+                  {new Date(item.published_at).toLocaleDateString("id-ID", {
                     day: "numeric",
                     month: "short",
                     year: "numeric",

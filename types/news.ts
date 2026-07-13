@@ -1,4 +1,10 @@
-export interface NewsCard {
+export interface NewsCategory {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export interface News {
   id: number;
   title: string;
   slug: string;
@@ -9,29 +15,77 @@ export interface NewsCard {
   views: number;
   published_at: string;
   thumbnail: string | null;
-  category: Category;
+  category: NewsCategory;
 }
 
-export interface NewsDetail extends NewsCard {
+/* -------------------------------------------------------------------------- */
+/*                                   DETAIL                                   */
+/* -------------------------------------------------------------------------- */
+
+export interface NewsGallery {
+  id: number;
+  url: string;
+}
+
+export interface NewsMeta {
+  title: string;
+  description: string;
+}
+
+export interface NewsDetail extends News {
   description: string;
   cover: string | null;
-  gallery: {
-    id: number;
-    url: string;
-  }[];
+  gallery: NewsGallery[];
   tags: string[];
-  meta: {
-    title: string | null;
-    description: string | null;
-  };
+  meta: NewsMeta;
   featured: boolean;
   published: boolean;
   created_at: string;
   updated_at: string;
 }
 
-export interface Category {
-  id: number;
-  name: string;
-  slug: string;
+export interface NewsDetailResponse {
+  success: boolean;
+  message: string;
+  data: {
+    news: NewsDetail;
+    related_news: News[];
+  };
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 PAGINATION                                 */
+/* -------------------------------------------------------------------------- */
+
+export interface PaginationLink {
+  url: string | null;
+  label: string;
+  page: number | null;
+  active: boolean;
+}
+
+export interface PaginationMeta {
+  current_page: number;
+  from: number | null;
+  last_page: number;
+  links: PaginationLink[];
+  path: string;
+  per_page: number;
+  to: number | null;
+  total: number;
+}
+
+export interface PaginationUrls {
+  first: string | null;
+  last: string | null;
+  prev: string | null;
+  next: string | null;
+}
+
+export interface NewsListResponse {
+  success: boolean;
+  message: string;
+  data: News[];
+  links: PaginationUrls;
+  meta: PaginationMeta;
 }

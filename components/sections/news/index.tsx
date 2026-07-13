@@ -1,4 +1,4 @@
-import type { News } from "@/types/homepage";
+import type { News, PaginationMeta } from "@/types/news";
 
 import NewsGrid from "./news-grid";
 import NewsPagination from "./news-pagination";
@@ -6,9 +6,10 @@ import NewsSidebar from "./news-sidebar";
 
 interface NewsSectionProps {
   news: News[];
+  meta: PaginationMeta;
 }
 
-const NewsSection = ({ news }: NewsSectionProps) => {
+const NewsSection = ({ news, meta }: NewsSectionProps) => {
   return (
     <section className="py-20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -18,9 +19,11 @@ const NewsSection = ({ news }: NewsSectionProps) => {
           <div className="lg:col-span-8">
             <NewsGrid news={news} />
 
-            <div className="mt-14">
-              <NewsPagination />
-            </div>
+            {meta.last_page > 1 && (
+              <div className="mt-14">
+                <NewsPagination meta={meta} />
+              </div>
+            )}
           </div>
 
           {/* Sidebar */}

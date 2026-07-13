@@ -1,29 +1,34 @@
-import { createMetadata } from "@/lib/seo";
-
-import PageBanner from "@/components/common/page-banner/page-banner";
+import NewsHero from "@/components/sections/news/news-hero";
 import NewsSection from "@/components/sections/news";
 
 import { getNews } from "@/services/news.service";
 
-export const metadata = createMetadata({
-  title: "News | PT Becta Logistics",
-  description:
-    "Stay updated with the latest news, projects, and company information from PT Becta Logistics.",
-  path: "/news",
-});
+interface NewsPageProps {
+  searchParams: Promise<{
+    page?: string;
+    q?: string;
+    category?: string;
+    sort?: "latest" | "oldest" | "popular" | "title";
+  }>;
+}
 
-export default async function NewsPage() {
-  const response = await getNews();
+export default async function NewsPage({ searchParams }: NewsPageProps) {
+  const params = await searchParams;
+
+  const page = Number(params.page ?? 1);
+
+  const response = await getNews({
+    page,
+    search: params.q,
+    category: params.category,
+    sort: params.sort,
+  });
 
   return (
     <>
-      <PageBanner
-        title="News"
-        description="Stay updated with the latest news, projects, and company information from PT Becta Logistics."
-        image="/cta/cta-bg.png"
-      />
+      <NewsHero />
 
-      <NewsSection news={response.data} />
+      <NewsSection news={response.data} meta={response.meta} />
     </>
   );
 }

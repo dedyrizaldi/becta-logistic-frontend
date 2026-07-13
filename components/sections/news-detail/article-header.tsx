@@ -1,160 +1,165 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 
+import { CalendarDays, Clock3, Eye, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { CalendarDays, FolderOpen } from "lucide-react";
+import { useLocale } from "next-intl";
 
-import type { News } from "@/types/homepage";
+import type { NewsDetail } from "@/types/news";
 import { mediaUrl } from "@/lib/media";
 
 interface ArticleHeaderProps {
-  news: News;
+  news: NewsDetail;
 }
 
-const ArticleHeader = ({ news }: ArticleHeaderProps) => {
-  return (
-    <section className="relative overflow-hidden">
-      {/* Hero Image */}
+export default function ArticleHeader({ news }: ArticleHeaderProps) {
+  const locale = useLocale();
 
-      <div className="relative h-[320px] overflow-hidden md:h-[420px] lg:h-[560px]">
+  const heroImage = mediaUrl(news.thumbnail);
+
+  return (
+    <section className="relative isolate overflow-hidden">
+      {/* Background */}
+
+      <div className="relative h-[420px] lg:h-[600px]">
         <Image
-          src={mediaUrl(news.thumbnail)}
+          src={heroImage}
           alt={news.title}
           fill
           priority
+          sizes="100vw"
           className="object-cover"
         />
 
         {/* Overlay */}
 
-        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-0 bg-black/55" />
 
         {/* Gradient */}
 
-        <div
-          className="
-            absolute
-            inset-0
-            bg-gradient-to-t
-            from-[#071C3A]
-            via-[#071C3A]/30
-            to-transparent
-          "
-        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#071C3A]/90 via-[#071C3A]/55 to-transparent" />
 
-        {/* Content */}
+        {/* Gold Glow */}
 
-        <div className="absolute inset-0 flex items-end">
-          <div className="mx-auto w-full max-w-5xl px-6 pb-12 lg:px-8 lg:pb-20">
+        <div className="absolute right-0 top-0 h-[500px] w-[500px] rounded-full bg-[#D8A41D]/10 blur-3xl" />
+      </div>
+
+      {/* Content */}
+
+      <div className="absolute inset-0 flex items-center">
+        <div className="mx-auto w-full max-w-7xl px-6 lg:px-8">
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+          >
+            {/* Breadcrumb */}
+
+            <nav className="mb-8 flex flex-wrap items-center gap-2 text-sm text-white/70">
+              <Link
+                href={`/${locale}`}
+                className="transition hover:text-[#D8A41D]"
+              >
+                Home
+              </Link>
+
+              <ChevronRight size={15} />
+
+              <Link
+                href={`/${locale}/news`}
+                className="transition hover:text-[#D8A41D]"
+              >
+                News
+              </Link>
+
+              <ChevronRight size={15} />
+
+              <span className="text-white">{news.category.name}</span>
+            </nav>
+
             {/* Category */}
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-              className="mb-6 flex flex-wrap items-center gap-4"
+            <span
+              className="
+                inline-flex
+                rounded-full
+                bg-[#D8A41D]
+                px-4
+                py-2
+                text-xs
+                font-bold
+                uppercase
+                tracking-[0.2em]
+                text-white
+              "
             >
-              <span
-                className="
-                  inline-flex
-                  items-center
-                  gap-2
-                  rounded-full
-                  bg-[#D8A41D]
-                  px-4
-                  py-2
-                  text-xs
-                  font-bold
-                  uppercase
-                  tracking-[0.2em]
-                  text-white
-                "
-              >
-                <FolderOpen size={14} />
-
-                {news.category.name}
-              </span>
-
-              <span
-                className="
-                  flex
-                  items-center
-                  gap-2
-                  text-sm
-                  text-white/90
-                "
-              >
-                <CalendarDays size={16} />
-
-                {new Date(news.published_at).toLocaleDateString("en-US", {
-                  day: "numeric",
-                  month: "long",
-                  year: "numeric",
-                })}
-              </span>
-            </motion.div>
+              {news.category.name}
+            </span>
 
             {/* Title */}
 
-            <motion.h1
-              initial={{ opacity: 0, y: 35 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.1,
-                duration: 0.5,
-              }}
+            <h1
               className="
+                mt-6
                 max-w-4xl
                 text-4xl
                 font-black
                 leading-tight
                 text-white
-                md:text-5xl
                 lg:text-6xl
               "
             >
               {news.title}
-            </motion.h1>
+            </h1>
 
-            {/* Excerpt */}
+            {/* Meta */}
 
-            <motion.p
-              initial={{ opacity: 0, y: 35 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.2,
-                duration: 0.5,
-              }}
+            <div
               className="
                 mt-8
-                max-w-3xl
-                text-lg
-                leading-8
+                flex
+                flex-wrap
+                items-center
+                gap-6
                 text-white/80
-                lg:text-xl
               "
             >
-              {news.excerpt}
-            </motion.p>
+              <div className="flex items-center gap-2">
+                <CalendarDays size={18} />
 
-            {/* Author */}
+                <span>
+                  {new Date(news.published_at).toLocaleDateString("id-ID", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
+                </span>
+              </div>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{
-                delay: 0.3,
-              }}
-              className="mt-8 text-white/80"
-            >
-              By <strong>{news.author}</strong>
-            </motion.div>
-          </div>
+              {news.reading_time && (
+                <div className="flex items-center gap-2">
+                  <Clock3 size={18} />
+
+                  <span>{news.reading_time} min read</span>
+                </div>
+              )}
+
+              <div className="flex items-center gap-2">
+                <Eye size={18} />
+
+                <span>{news.views} Views</span>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
   );
-};
-
-export default ArticleHeader;
+}

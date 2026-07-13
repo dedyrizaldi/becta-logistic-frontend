@@ -66,7 +66,7 @@ const AuthorCard = () => {
             <div className="mt-5 flex flex-wrap gap-6">
               <div className="flex items-center gap-2 text-sm text-slate-600">
                 <Mail size={16} className="text-[#D8A41D]" />
-                info@bectalogistics.com
+                info@becta.co.id
               </div>
 
               <div className="flex items-center gap-2 text-sm text-slate-600">

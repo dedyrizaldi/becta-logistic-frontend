@@ -1,53 +1,44 @@
 import { apiFetch } from "@/lib/api";
-import { ApiResponse, News } from "@/types/homepage";
-import { NewsDetail } from "@/types/news";
 
-export interface NewsResponse {
-  data: News[];
-  links: {
-    first: string | null;
-    last: string | null;
-    prev: string | null;
-    next: string | null;
-  };
-  meta: {
-    current_page: number;
-    last_page: number;
-    per_page: number;
-    total: number;
-  };
+import type { NewsDetailResponse, NewsListResponse } from "@/types/news";
+
+interface GetNewsParams {
+  page?: number;
+  search?: string;
+  category?: string;
+  sort?: "latest" | "oldest" | "popular" | "title";
 }
 
-export interface NewsDetailResponse {
-  news: NewsDetail;
-  related_news: News[];
+export async function getNews(
+  params: GetNewsParams = {},
+): Promise<NewsListResponse> {
+  const searchParams = new URLSearchParams();
+
+  if (params.page) {
+    searchParams.set("page", params.page.toString());
+  }
+
+  if (params.search) {
+    searchParams.set("q", params.search);
+  }
+
+  if (params.category) {
+    searchParams.set("category", params.category);
+  }
+
+  if (params.sort) {
+    searchParams.set("sort", params.sort);
+  }
+
+  const query = searchParams.toString();
+
+  return apiFetch<NewsListResponse>(`/api/v1/news${query ? `?${query}` : ""}`);
 }
 
-/**
- * GET /api/v1/news
- */
-export async function getNews(page = 1): Promise<NewsResponse> {
-  const response = await apiFetch<
-    ApiResponse<News[]> & {
-      links: NewsResponse["links"];
-      meta: NewsResponse["meta"];
-    }
-  >(`/api/v1/news?page=${page}`);
-
-  return {
-    data: response.data,
-    links: response.links,
-    meta: response.meta,
-  };
+export async function getFeaturedNews(): Promise<NewsListResponse> {
+  return apiFetch<NewsListResponse>("/api/v1/news/featured");
 }
 
-/**
- * GET /api/v1/news/{slug}
- */
 export async function getNewsDetail(slug: string): Promise<NewsDetailResponse> {
-  const response = await apiFetch<ApiResponse<NewsDetailResponse>>(
-    `/api/v1/news/${slug}`,
-  );
-
-  return response.data;
+  return apiFetch<NewsDetailResponse>(`/api/v1/news/${slug}`);
 }
