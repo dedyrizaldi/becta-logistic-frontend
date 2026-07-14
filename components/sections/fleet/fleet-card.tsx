@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import { ArrowRight } from "lucide-react";
 
@@ -12,9 +11,10 @@ import { Button } from "@/components/ui/button";
 
 interface FleetCardProps {
   fleet: Fleet;
+  onViewDetail: (slug: string) => void;
 }
 
-const FleetCard = ({ fleet }: FleetCardProps) => {
+const FleetCard = ({ fleet, onViewDetail }: FleetCardProps) => {
   return (
     <article
       className="
@@ -39,6 +39,7 @@ const FleetCard = ({ fleet }: FleetCardProps) => {
           alt={fleet.title}
           width={600}
           height={350}
+          unoptimized
           className="
             h-[190px]
             w-full
@@ -74,8 +75,6 @@ const FleetCard = ({ fleet }: FleetCardProps) => {
       {/* Content */}
 
       <div className="p-6">
-        {/* Title */}
-
         <h3
           className="
             text-lg
@@ -86,8 +85,6 @@ const FleetCard = ({ fleet }: FleetCardProps) => {
         >
           {fleet.title}
         </h3>
-
-        {/* Code */}
 
         <p
           className="
@@ -141,8 +138,8 @@ const FleetCard = ({ fleet }: FleetCardProps) => {
         {/* Button */}
 
         <Button
-          asChild
           variant="outline"
+          onClick={() => onViewDetail(fleet.slug)}
           className="
             mt-6
             w-full
@@ -155,10 +152,8 @@ const FleetCard = ({ fleet }: FleetCardProps) => {
             hover:text-white
           "
         >
-          <Link href={`/fleet/${fleet.slug}`}>
-            View Detail
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Link>
+          View Detail
+          <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
       </div>
     </article>
