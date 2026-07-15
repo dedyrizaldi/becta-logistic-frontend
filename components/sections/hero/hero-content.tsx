@@ -108,7 +108,7 @@ const HeroContent = ({ hero, selectedIndex }: HeroContentProps) => {
       </div>
 
       {/* Statistics */}
-
+      {/* 
       <div
         className="
           mt-6
@@ -125,7 +125,7 @@ const HeroContent = ({ hero, selectedIndex }: HeroContentProps) => {
         <Stat number="35+" label="Fleet Units" />
 
         <Stat number="500+" label="Projects" />
-      </div>
+      </div> */}
     </div>
   );
 };

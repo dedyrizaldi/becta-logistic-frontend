@@ -7,8 +7,6 @@ interface ArticleContentProps {
 }
 
 export default function ArticleContent({ content }: ArticleContentProps) {
-  console.log(content);
-
   return (
     <section className="relative py-20">
       <div className="mx-auto max-w-5xl px-6">
@@ -63,7 +61,7 @@ export default function ArticleContent({ content }: ArticleContentProps) {
             prose-hr:border-slate-300
           "
           dangerouslySetInnerHTML={{
-            __html: DOMPurify.sanitize(content),
+            __html: content,
           }}
         />
       </div>
