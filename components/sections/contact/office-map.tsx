@@ -17,7 +17,7 @@ export default function OfficeMap({ website }: OfficeMapProps) {
   const t = useTranslations("contact-page");
 
   return (
-    <section className="bg-slate-50 py-24">
+    <section className="bg-slate-50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-[.3em] text-[#D8A41D]">
@@ -33,7 +33,7 @@ export default function OfficeMap({ website }: OfficeMapProps) {
           </p>
         </div>
 
-        <div className="overflow-hidden rounded-[10px] shadow-xl">
+        <div className="h-[520px] overflow-hidden rounded-[10px] shadow-xl">
           <OfficeLeaflet website={website} />
         </div>
       </div>

@@ -8,7 +8,7 @@ export async function apiFetch<T>(
 ): Promise<T> {
   const url = `${API_URL}${endpoint.startsWith("/") ? endpoint : `/${endpoint}`}`;
 
-  console.log("[API]", url);
+  // console.log("[API]", url);
 
   const response = await fetch(url, {
     ...options,

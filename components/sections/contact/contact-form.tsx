@@ -31,7 +31,7 @@ const ContactForm = () => {
     (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
 
-      console.log(form);
+      // console.log(form);
 
       // TODO:
       // POST ke Laravel

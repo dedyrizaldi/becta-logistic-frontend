@@ -35,7 +35,6 @@ export default async function ContactPage() {
       </section>
 
       <OfficeMap website={homepage.website} />
-
       <CTA />
     </>
   );

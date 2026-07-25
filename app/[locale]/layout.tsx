@@ -7,6 +7,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import TransitionProvider from "@/components/loading/transition-provider";
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
+import FloatingWhatsapp from "@/components/common/floating-whatsapp";
 
 import { getHomepage } from "@/services/homepage.service";
 import { routing } from "@/i18n/routing";
@@ -45,7 +46,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <Header />
 
           <TransitionProvider>{children}</TransitionProvider>
-
+          <FloatingWhatsapp phone={homepage.website.whatsapp} />
           <Footer website={homepage.website} />
         </NextIntlClientProvider>
       </body>
