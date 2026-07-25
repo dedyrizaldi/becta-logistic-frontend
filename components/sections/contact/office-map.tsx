@@ -3,15 +3,21 @@
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 
+import type { Website } from "@/types/homepage";
+
 const OfficeLeaflet = dynamic(() => import("./office-leaflet"), {
   ssr: false,
 });
 
-export default function OfficeMap() {
+interface OfficeMapProps {
+  website: Website;
+}
+
+export default function OfficeMap({ website }: OfficeMapProps) {
   const t = useTranslations("contact-page");
 
   return (
-    <section className="bg-slate-50">
+    <section className="bg-slate-50 py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-12 text-center">
           <span className="text-xs font-bold uppercase tracking-[.3em] text-[#D8A41D]">
@@ -27,8 +33,8 @@ export default function OfficeMap() {
           </p>
         </div>
 
-        <div className="h-[520px] overflow-hidden rounded-[10px] shadow-xl">
-          <OfficeLeaflet />
+        <div className="overflow-hidden rounded-[10px] shadow-xl">
+          <OfficeLeaflet website={website} />
         </div>
       </div>
     </section>

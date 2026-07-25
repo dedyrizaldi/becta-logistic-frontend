@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import L from "leaflet";
-
 import {
   MapContainer,
   Marker,
@@ -14,12 +13,11 @@ import {
 
 import "leaflet/dist/leaflet.css";
 
-const office = {
-  name: "PT Becta Logistics",
-  address: "Jl. Raya Pelabuhan No.88, Jakarta Utara, Indonesia",
-  latitude: -6.1045,
-  longitude: 106.8863,
-};
+import type { Website } from "@/types/homepage";
+
+interface OfficeLeafletProps {
+  website: Website;
+}
 
 const marker = new L.Icon({
   iconUrl: "/marker/marker-gold.svg",
@@ -30,15 +28,21 @@ const marker = new L.Icon({
   popupAnchor: [0, -34],
 });
 
-const bounds: [[number, number], [number, number]] = [
-  [office.latitude - 0.01, office.longitude - 0.01],
-  [office.latitude + 0.01, office.longitude + 0.01],
-];
-
-function MapController() {
+function MapController({
+  latitude,
+  longitude,
+}: {
+  latitude: number;
+  longitude: number;
+}) {
   const map = useMap();
 
   useEffect(() => {
+    const bounds: [[number, number], [number, number]] = [
+      [latitude - 0.01, longitude - 0.01],
+      [latitude + 0.01, longitude + 0.01],
+    ];
+
     const updateMap = () => {
       setTimeout(() => {
         map.invalidateSize();
@@ -57,33 +61,40 @@ function MapController() {
     return () => {
       window.removeEventListener("resize", updateMap);
     };
-  }, [map]);
+  }, [latitude, longitude, map]);
 
   return null;
 }
 
-export default function OfficeLeaflet() {
+export default function OfficeLeaflet({ website }: OfficeLeafletProps) {
+  const latitude = website.latitude ?? -6.1045;
+  const longitude = website.longitude ?? 106.8863;
+
+  const position = useMemo(
+    () => [latitude, longitude] as [number, number],
+    [latitude, longitude],
+  );
+
   return (
     <MapContainer
+      center={position}
+      zoom={15}
       zoomControl
       attributionControl={false}
       scrollWheelZoom
       dragging
       touchZoom
       doubleClickZoom
-      className="h-full w-full"
+      className="h-[520px] w-full"
     >
-      <MapController />
+      <MapController latitude={latitude} longitude={longitude} />
 
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        attribution="&copy; OpenStreetMap contributors"
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker
-        position={[office.latitude, office.longitude]}
-        icon={marker}
-        riseOnHover
-      >
+
+      <Marker position={position} icon={marker} riseOnHover>
         <Tooltip
           direction="top"
           sticky
@@ -91,17 +102,20 @@ export default function OfficeLeaflet() {
           offset={[0, -30]}
           className="coverage-tooltip"
         >
-          {office.name}
+          {website.company_name}
         </Tooltip>
 
         <Popup>
-          <div className="space-y-2">
-            <strong>{office.name}</strong>
+          <div className="space-y-3">
+            <h4 className="font-bold">{website.company_name}</h4>
 
-            <p>{office.address}</p>
+            <p className="text-sm text-slate-600">{website.address}</p>
 
             <a
-              href={`https://maps.google.com/?q=${office.latitude},${office.longitude}`}
+              href={
+                website.google_maps ||
+                `https://maps.google.com/?q=${latitude},${longitude}`
+              }
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-[#D8A41D]"

@@ -3,7 +3,15 @@ import type { MetadataRoute } from "next";
 const baseUrl = "https://becta.co.id";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ["", "/about", "/services", "/fleet", "/projects", "/contact"];
+  const routes = [
+    "",
+    "/about",
+    "/services",
+    "/fleet",
+    "/projects",
+    "/news",
+    "/contact",
+  ];
 
   return routes.flatMap((route) => [
     {

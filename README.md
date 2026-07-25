@@ -118,7 +118,16 @@ becta-logistics
 │  │  │  ├─ fleet-header.tsx
 │  │  │  ├─ fleet-navigation.tsx
 │  │  │  ├─ fleet-slider.tsx
-│  │  │  └─ fleet.tsx
+│  │  │  ├─ fleet.tsx
+│  │  │  └─ modal
+│  │  │     ├─ fleet-actions.tsx
+│  │  │     ├─ fleet-detail-modal.tsx
+│  │  │     ├─ fleet-gallery.tsx
+│  │  │     ├─ fleet-header.tsx
+│  │  │     ├─ fleet-loading.tsx
+│  │  │     ├─ fleet-overview.tsx
+│  │  │     ├─ fleet-specification.tsx
+│  │  │     └─ index.ts
 │  │  ├─ hero
 │  │  │  ├─ hero-content.tsx
 │  │  │  ├─ hero-image.tsx
@@ -144,7 +153,9 @@ becta-logistics
 │  │  │  ├─ article-gallery.tsx
 │  │  │  ├─ article-header.tsx
 │  │  │  ├─ article-share.tsx
-│  │  │  └─ author-card.tsx
+│  │  │  ├─ article-tags.tsx
+│  │  │  ├─ author-card.tsx
+│  │  │  └─ related-news.tsx
 │  │  ├─ services
 │  │  │  ├─ service-card.tsx
 │  │  │  ├─ service-grid.tsx
@@ -162,6 +173,7 @@ becta-logistics
 │     ├─ button.tsx
 │     ├─ card.tsx
 │     ├─ container.tsx
+│     ├─ dialog-fullscreen.tsx
 │     ├─ dialog.tsx
 │     ├─ grid.tsx
 │     ├─ heading.tsx
@@ -170,6 +182,7 @@ becta-logistics
 │     ├─ section.tsx
 │     ├─ separator.tsx
 │     ├─ sheet.tsx
+│     ├─ skeleton.tsx
 │     ├─ stack.tsx
 │     └─ stat.tsx
 ├─ components.json
@@ -266,6 +279,7 @@ becta-logistics
 │  └─ window.svg
 ├─ README.md
 ├─ services
+│  ├─ fleet.service.ts
 │  ├─ homepage.service.ts
 │  └─ news.service.ts
 ├─ tsconfig.json
